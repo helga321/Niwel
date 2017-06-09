@@ -132,20 +132,14 @@ public class Building : MonoBehaviour{
 
 		if (room1ChildCount == 5) {
 			part1 = room1.transform.GetChild ((int)WallDirection.North);
-			Debug.Log("part1childidx:"+(int)WallDirection.North);
 		} else if (room1ChildCount == 6) {
-			Debug.Log("room1");
 			part1 = room1.transform.GetChild ((int)WallDirection.North+1);
-			Debug.Log("part1childidx:"+((int)WallDirection.North+1));
 		}
 
 		if (room2ChildCount == 5) {
-			part2 = room1.transform.GetChild ((int)WallDirection.South);
-			Debug.Log("part2childidx:"+(int)WallDirection.South);
+			part2 = room2.transform.GetChild ((int)WallDirection.South);
 		} else if (room2ChildCount == 6) {
-			Debug.Log("room2");
-			part2 = room1.transform.GetChild ((int)WallDirection.South+1);
-			Debug.Log("part2childidx:"+((int)WallDirection.South+1));
+			part2 = room2.transform.GetChild ((int)WallDirection.South+1);
 		}
 
 		int room1SpriteCount = part1.childCount;
@@ -176,5 +170,6 @@ public class Building : MonoBehaviour{
 	private void CreateVerticalGap (int row, int col, int idx){
 		Transform obj = roomObj[row,col].transform.GetChild(idx);
 		obj.GetChild(0).gameObject.SetActive(false);
+		obj.GetChild(1).gameObject.SetActive(false);
 	}
 }

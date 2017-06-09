@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour {
 	private Vector3 targetPos;
 	private float smoothTime = 0.3f;
 	private Vector3 velocity = Vector3.zero;
+	private string playerTag = "MainChar";
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,7 @@ public class CameraFollow : MonoBehaviour {
 	void Update ()
 	{
 		if (playerObj == null) {
-			playerObj = GameObject.FindGameObjectWithTag("Player");
+			playerObj = GameObject.FindGameObjectWithTag(playerTag);
 		}
 
 		playerPos = playerObj.transform.localPosition;

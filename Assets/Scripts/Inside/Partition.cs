@@ -41,6 +41,7 @@ public class Partition : MonoBehaviour {
 		for (int i = 0; i < spriteCount; i++) {
 			if ((i < randPartStart) || (i >= (randPartStart + randPartDistance))) {
 				GameObject partObj = Instantiate (partitionPrefab) as GameObject;
+				partObj.GetComponent<BoxCollider2D>().offset = new Vector2(1.1f,-1.1f);
 				randSprite = Random.Range (0, currPartSprite.Length);
 				if (groundFloor) {
 					partObj.transform.localPosition = new Vector3 ((spriteDistance * i), 0, 0f);
@@ -72,6 +73,7 @@ public class Partition : MonoBehaviour {
 
 			if (!createVertGap) {
 				GameObject partObj = Instantiate (partitionPrefab) as GameObject;
+				partObj.GetComponent<BoxCollider2D>().offset = new Vector2(1.1f,1.1f);
 				rand = Random.Range (0, currPartSprite.Length);
 				partObj.transform.localPosition = new Vector3 (distanceXFromPivot, (spriteDistance * i), 0f);
 				if (flipPartition) {
@@ -80,7 +82,8 @@ public class Partition : MonoBehaviour {
 				partObj.GetComponent<SpriteRenderer> ().sprite = currPartSprite [rand];
 				partObj.transform.SetParent (rootObj.transform, false);
 			}
-			createVertGap=false;
+			if(i>=1)
+				createVertGap=false;
 		}
 
 		rootObj.transform.SetParent(roomRootObj.transform,false);
